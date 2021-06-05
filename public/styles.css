@@ -1,0 +1,91 @@
+
+body{
+  background-image: url(https://i.pinimg.com/originals/72/96/0f/72960f5122fb1f3e24259821e060cb4a.jpg);
+}
+#app {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.marker {
+  position: absolute;
+  width: 35px;
+  left: 172px;
+  top: -20px;
+  z-index: 2;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+}
+
+.button {
+  display: block;
+  width: 250px;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.blur {
+  animation: blur 10s;
+}
+.rainbow{
+  animation: coolor 10s;
+}
+
+.result{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 50px;
+  color:white;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.black{
+  background-color: black;
+
+}
+.red{
+  background-color: red;
+
+}
+.green{
+  background-color: green;
+ 
+  
+}
+
+
+@keyframes blur {
+  0% {
+    filter: blur(0.5px);
+  }
+  50%{
+    filter: blur(2px);
+  }
+  80% {
+    filter: blur(1.5px);
+  }
+  95% {
+    filter: blur(0px);
+    
+  }
+
+
+}
+
+.countdown{
+  font-size: 85px;
+ border-radius: 10px;
+  background-color: rgb(255, 0, 0);
+  margin-left: 100px;
+ color: white;
+}
+
