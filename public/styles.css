@@ -1,6 +1,6 @@
 
 body{
-  background-image: url(https://i.pinimg.com/originals/72/96/0f/72960f5122fb1f3e24259821e060cb4a.jpg);
+  background-image: url(background.jpg);
 }
 #app {
   width: 400px;
@@ -13,11 +13,17 @@ body{
   position: absolute;
   width: 35px;
   left: 172px;
-  top: -20px;
+  top: -28px;
   z-index: 2;
+  margin-left: 453px;
 }
 
 .wheel {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.wheel1 {
   width: 100%;
   height: 100%;
 }
@@ -45,7 +51,14 @@ body{
   font-size: 50px;
   color:white;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 100px;
+  z-index: 3;
+  background-color: green;
+  position: absolute;
+  margin-left: 616px;
+  min-width: 80px;
+  min-height: 70px;
+  padding-top: 8px;
 }
 
 .black{
@@ -82,10 +95,9 @@ body{
 }
 
 .countdown{
-  font-size: 85px;
- border-radius: 10px;
-  background-color: rgb(255, 0, 0);
-  margin-left: 100px;
- color: white;
+  font-size: 45px;
+  margin-top: -50px;
+  text-align: center;
+  color: white;
 }
 
