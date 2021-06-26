@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ticketController;
 use App\Http\Controllers\RouletteController;
 
 /*
@@ -29,3 +30,5 @@ Route::post('/',[RouletteController::class,'handleAddResultRound'])->name('handl
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::post('/sendtiquet',[ticketController::class,'handleTicket'])->name('handleTicket');
