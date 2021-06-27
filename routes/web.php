@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\authController;
 use App\Http\Controllers\ticketController;
 use App\Http\Controllers\RouletteController;
 
@@ -16,13 +17,13 @@ use App\Http\Controllers\RouletteController;
 */
 
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
 
-Route::get('/shop1', function () {
-    return view('shop.index');
-});
+// Route::get('/shop1', function () {
+//     return view('shop.index');
+// });
 
 Route::get('/',[RouletteController::class,'showMainRound'])->name('showMainRound');
 Route::post('/',[RouletteController::class,'handleAddResultRound'])->name('handleAddResultRound');
@@ -32,3 +33,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::post('/sendtiquet',[ticketController::class,'handleTicket'])->name('handleTicket');
+Route::get('/shop1',[RouletteController::class,'showShop'])->name('showShop');
+Route::get('/login',[authController::class,'showClientLogin'])->name('showClientLogin');
+Route::post('/login',[authController::class,'handleClientLogin'])->name('handleClientLogin');

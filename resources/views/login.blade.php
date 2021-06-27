@@ -111,10 +111,16 @@ span a {
     </style>
 </head>
 <body style="background-image: url(bglogin.jpg) ;   background-repeat: no-repeat;  background-size: 100% 100%;">
-    <div class="form-box">
-		<div class="header-text">
+    <form action="{{ route('handleClientLogin') }}" method="POST" class="form-box">
+		@csrf
+		<div class="header-text" style="color: white">
 			Login 
-		</div><input placeholder="Your Login" type="text"> <input placeholder="Your Password" type="password"> <input id="terms" type="checkbox"> <label for="terms"></label><span>Agree with <a href="#">Terms & Conditions</a></span> <button>login</button>
-	</div>
+		</div>
+		<input name="login" placeholder="Your Login" type="text"> 
+		<input name="password" placeholder="Your Password" type="password">
+		 <input id="terms" type="checkbox">
+		  <label for="terms"></label><span>Agree with <a href="#">Terms & Conditions</a></span> 
+		  <button type="submit">login</button>
+	</form>
 </body>
 </html>

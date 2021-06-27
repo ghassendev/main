@@ -15,17 +15,17 @@
           <div class="collapse navbar-collapse" id="collapsibleNavId">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                   <li class="nav-item active">
-                      <a class="nav-link" href="#" style="color: white;"><img src="assets/user.png" width="5%" alt="Avatar" />  User</a>
+                      <a class="nav-link" href="#" style="color: white;"><img src="assets/user.png" width="5%" alt="Avatar" /> {{$name}}</a>
                   </li>
                   <li class="nav-item" style="display:flex;">
                       <img src="assets/flous.png" alt="" width="5%" /> 
-                      <a class="nav-link" href="#" style="color: white;">Balance : 0.000 TND</a>
+                      <a class="nav-link" href="#" style="color: white;">Balance : {{$solde}} TND</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#" style="color: white;">Parameters</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: white;">Historique</a>
+                    <a class="nav-link" href="#" style="color: white;" data-toggle="modal" data-target="#exampleModalLong">Historique</a>
                 </li>
               </ul>
           </div>
@@ -192,8 +192,13 @@
             {{-- <div id="list" style="background-color: white;margin-left: 22px;width: 141%;">
               
             </div> --}}
-            <form id="list" style="background-color: white;margin-left: 22px;width: 141%;" action='{{ route('handleTicket') }}' method='POST'>
+            <form  action='{{ route('handleTicket') }}' method='POST'>
                 @csrf
+                <input type="hidden" name="id" value="{{$id}}">
+                <br>
+                <div id="list" style="background-color: white;margin-left: 22px;width: 198%;">
+
+                </div>
                 <br>
                 <input value="Valider" type="submit" class="btn btn-success" onclick="window.PrintElem()"  />  
                 <input type="button" onclick="mydelete()" class="btn btn-danger" value="Supprimer"></button>
@@ -207,6 +212,44 @@
 
         </div>
       </div>
+
+
+
+
+
+
+
+      <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">History</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        @foreach ($tickets as $ticket)
+            <span>ID Ticket:{{$ticket->id}}  &nbsp;&nbsp;&nbsp;  </span><span>Gain estimeé: {{$ticket->maxwin}} &nbsp; &nbsp;&nbsp;&nbsp; </span><span>Statut:  @if($ticket->statut == 0) <span class="text-warning">  en attente </span> @elseif($ticket->statut == 1) <span class="text-success"> Gagnant </span>@else <span class="text-danger">  Perdu </span> @endif</span><hr>
+        @endforeach
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
         <script>
 
@@ -226,13 +269,15 @@
             // document.getElementById("totale").innerHTML = " </span> <span style='float:center'>  Totale Mise :"+totaleMise+  "</span>   <span style='float:right'>      Totale Gain possible :  "+ totale +" </span><br>";
             // document.getElementById("list").innerHTML += "<span style='float:left'> Number : "+number +" </span> <span style='float:center'>   Mise :"+mise+  "</span>   <span style='float:right'>         Gain possible :  "+ gain +"TND </span><br>";  
             // document.getElementById("list").innerHTML += "<form id='"+number+"' action='{{ route('handleTicket') }}' method='POST' >  <span style='float:left'> Number : "+number +" </span> <span style='float:center'>   Mise :"+mise+  "</span>   <span style='float:right'>         Gain possible :  "+ gain +"TND </span></form> ";  
-             document.getElementById("list").innerHTML += "Number :  <input type='text' name='choice'  value='"
+
+            
+            document.getElementById("list").innerHTML += " <div class='row'>  <div class='col'> Number :  <input type='text' name='choice'  readonly='readonly'  value='"
              +number +
-             "'> <br>  Mise :  <input type='number' name='mise'  value='"
+             "'> </div>  <div class='col'>   Mise :  <input type='number' name='mise'  readonly='readonly'  value='"
              +mise+
-              "' > <br> Gain possible : <input type='text' name='maxwin'  value=' "
+              "' > </div>  <div class='col'>  Gain possible : <input type='number' name='maxwin' readonly='readonly'  value='"
               + gain +
-              "TND'> <br> ";  
+              "'>  </div></div><br> ";  
             
           }
           function HIGHCOLORBRED(number){
@@ -245,7 +290,14 @@
             }          
             const str = tab.toString() + ": HIGH RED";
             number = str;
-            document.getElementById("list").innerHTML += "<span style='float:left;font-size:12px;'> Number : "+ number +" </span> <span style='float:center;font-size:12px;'>   Mise :"+mise+ "</span><span style='float:right;font-size:12px;'> Gain possible :  "+ gain +"TND </span><br>"; 
+            // document.getElementById("list").innerHTML += "<span style='float:left;font-size:12px;'> Number : "+ number +" </span> <span style='float:center;font-size:12px;'>   Mise :"+mise+ "</span><span style='float:right;font-size:12px;'> Gain possible :  "+ gain +"TND </span><br>";
+            document.getElementById("list").innerHTML += " <div class='row'>  <div class='col'> Number :  <input type='text' name='choice'  readonly='readonly'  value='"
+             +number +
+             "'> </div>  <div class='col'>   Mise :      <input type='number' name='mise'  readonly='readonly'  value='"
+             +mise+
+              "' > </div>  <div class='col'>  Gain possible : <input type='text' name='maxwin' readonly='readonly'  value=' "
+              + gain +
+              "TND'>  </div></div><br> ";   
           }
           function HIGHCOLORBLACK(number){
             var tab = new Array(20,22,24,26,29,31,33,35);
