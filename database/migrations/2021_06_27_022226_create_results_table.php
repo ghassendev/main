@@ -15,9 +15,7 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-           
-            $table->integer('result',255)->nullable();
-            
+            $table->integer('result')->nullable();
             $table->timestamps();
         });
     }
