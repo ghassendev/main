@@ -71,10 +71,18 @@ class RouletteController extends Controller
       return view('shop.index', compact('solde','id','name','tickets'));
    }
    
-   public function winSpin(){
+   // public function SpinRou(){
+   //    $milliseconds= 5000;
+   //    $f= 50;
+   //    $seconds=(int)$milliseconds/1000;
+   //    while(true)
+   //    {
+   //        $f();
+   //        sleep($seconds);
+   //    }
+   // }
 
-
-   }
+}   
 
 //    $datetime1 = new DateTime('2009-10-11 12:12:00');
 // $datetime2 = new DateTime('2009-10-13 10:12:00');
@@ -90,4 +98,5 @@ class RouletteController extends Controller
 // if ($datetime1 == $datetime2) {
 //     echo 'datetime2 is equal than datetime1';
 // }
-}   
+
+

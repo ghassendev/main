@@ -43,6 +43,7 @@ window.onload = function () {
     startButton.style.pointerEvents = 'none';
     // Calculate a new rotation between 5000 and 10 000
     deg = Math.floor(1800 + Math.random() * 1800);
+    console.log(deg);
     //deg =40 ;
     // Set the transition on the wheel
     wheel.style.transition = 'all 15s ease ';
