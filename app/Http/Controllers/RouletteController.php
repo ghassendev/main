@@ -13,10 +13,10 @@ class RouletteController extends Controller
    public function handleAddResultRound(Request $request){
 
     $result = new Result;
-    $result->date_time = date('Y-m-d H:i:s');
+   //  $result->date_time = date('Y-m-d H:i:s');
     $result->result= $request->value;
-    $result->in=0;
-    $result->out=0;
+   //  $result->in=0;
+   //  $result->out=0;
 
     $result->save();
 
