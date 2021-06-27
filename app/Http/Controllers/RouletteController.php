@@ -53,7 +53,10 @@ class RouletteController extends Controller
    public function showMainRound(){
 
     $resultone= Result::latest()->first();
-    $result=$resultone['result'];
+    if($resultone == NULL){
+       $result = 0 ;
+    }
+   //  $result=$resultone['result'];
     $results = Result::latest()->take(5)->get();
     $results = $results->reverse();
     return view('index',compact('result','results'));
